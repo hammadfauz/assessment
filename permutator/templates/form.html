@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<head>
+  <title>Assessment | permutator</title>
+</head>
+<body>
+  <label for='textInput'>Input String: </label>
+  <input type='text' id='textInput'></input>
+  <button id='go'>permutate!</button>
+  <p id='displayArea'></p>
+  <script>
+    var ajax = new XMLHttpRequest();
+    ajax.onreadystatechange = function() {
+      if (ajax.readyState === 4 && ajax.status === 200) {
+        document.getElementById('displayArea').innerHTML = ajax.responseText;
+      } else {
+        document.getElementById('displayArea').innerHTML = 'Error Happened.';
+      }
+    };
+    document.getElementById('go').onclick = function() {
+      var input = document.getElementById('textInput').value;
+      ajax.open('GET', '/permutator/' + input, true);
+      ajax.send();
+    };
+  </script>
+</body>
