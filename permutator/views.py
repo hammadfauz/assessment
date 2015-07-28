@@ -15,6 +15,7 @@ def permutator(request, someString):
     response = HttpResponse(retval)
     response['Content-Type'] = 'application/json'
     return response
+  //10 letter permutations are cpu intensive and take very long
   retval = json.dumps([''.join(p) for p in itertools.permutations(someString[0:3])])
   response = HttpResponse(retval)
   response['Content-Type'] = 'application/json'
